@@ -1,0 +1,117 @@
+
+class: center, middle
+
+# Gulp.js a awesome
+Vegard Veiset
+
+---
+
+# Introduksjon
+
+Hva er gulp?
+
+```
+$ npm install gulp
+```
+    
+Noe tekst her
+
+* byggesystem for javascript
+* awesome
+
+
+---
+
+# Alternativer
+
+Andre byggesystem:
+
+* npm
+* Grunt.js
+
+
+---
+
+# gulpfile.js
+
+```javascript
+var gulp = require('gulp');
+var babel = require('babel');
+
+gulp.src(config.SRC.JS)
+  .pipe(babel());
+```
+
+---
+
+# npm som interface!
+
+```javascript
+"scripts": {
+  "clean" : "rm -r tmp/",
+  "build" : "gulp build"
+}
+```
+
+---
+
+# Features
+
+* Streams
+* Masse pakker
+* Enkelt å skrive egne pakker
+* Javascript
+
+```javascript
+express.run(['test/mock/backend.js'].concat(process.argv), {}, false);
+gulp.watch(['test/mock/**/*.js'], function() {
+  express.stop();
+  express.run(['test/mock/backend.js'].concat(process.argv));
+  devtools.reload();
+});
+```
+---
+
+# Streams
+
+```javascript
+mergestream = require('merge-stream'),
+
+let app = () => gulp.src(config.SRC.JS).pipe(bable());
+let less = () => gulp.src(config.SRC.LESS).pipe(css());
+
+mergestream(app(), less());
+
+```
+
+---
+
+# Streams (queue)
+
+```javascript
+...
+streamqueue = require('streamqueue');
+
+function build() {
+  let app = () => gulp.src(config.SRC.JS).pipe(bable());
+  let lib = () => gulp.src(config.SRC.LIB);
+
+  return streamqueue({objectMode: true}, lib(), app())
+            .pipe(concat('myapp.js')); 
+}
+```
+
+---
+
+# Splitte opp prosjektet
+
+```
+gulpfile.js
+gulp/javascript.js
+gulp/styling.js
+gulp/tools.js
+```
+
+---
+
+# Demo

@@ -1,7 +1,7 @@
 
 class: center, middle
 
-# Gulp.js a awesome
+# Gulp.js a awesome!
 Vegard Veiset
 
 ---
@@ -14,7 +14,7 @@ Hva er gulp?
 $ npm install gulp
 ```
     
-Noe tekst her
+Gulp.js er:
 
 * byggesystem for javascript
 * awesome
@@ -38,8 +38,9 @@ Andre byggesystem:
 var gulp = require('gulp');
 var babel = require('babel');
 
-gulp.src(config.SRC.JS)
-  .pipe(babel());
+gulp.src(['./src/**.js'])
+  .pipe(babel())
+  .pipe(gulp.dest('dist/'));
 ```
 
 ---
@@ -77,10 +78,12 @@ gulp.watch(['test/mock/**/*.js'], function() {
 ```javascript
 mergestream = require('merge-stream'),
 
-let app = () => gulp.src(config.SRC.JS).pipe(bable());
-let less = () => gulp.src(config.SRC.LESS).pipe(css());
+function app() { return gulp.src(config.SRC.JS).pipe(bable()); }
+function less() { return gulp.src(config.SRC.LESS).pipe(less()); }
 
-mergestream(app(), less());
+function build() {
+  return mergestream(app(), less());
+}
 
 ```
 
@@ -89,16 +92,17 @@ mergestream(app(), less());
 # Streams (queue)
 
 ```javascript
-...
 streamqueue = require('streamqueue');
 
-function build() {
-  let app = () => gulp.src(config.SRC.JS).pipe(bable());
-  let lib = () => gulp.src(config.SRC.LIB);
+function app() { return gulp.src(config.SRC.JS).pipe(bable()); }
+function lib() { return gulp.src(config.SRC.LIB); }
 
+function buildJS() {
   return streamqueue({objectMode: true}, lib(), app())
-            .pipe(concat('myapp.js')); 
+          .pipe(concat('myapp.js'));   
 }
+
+
 ```
 
 ---

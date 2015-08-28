@@ -1,7 +1,0 @@
-# Hallo
-
----
-
-# Slide 2
-
-- Content

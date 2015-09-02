@@ -28,7 +28,7 @@ gulp.task('presentation', function() {
     .pipe(rename('content.txt'))
     .pipe(gulp.dest('./app/'))
     .pipe(connect.reload());
-})
+});
  
 gulp.task('watch', function () {
   gulp.watch(['./app/*.html'], ['html']);

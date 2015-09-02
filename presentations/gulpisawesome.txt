@@ -10,15 +10,107 @@ Vegard Veiset
 
 Hva er gulp?
 
+* byggesystem for javascript
+* Streams
+* Javascript
+* src, dest, watch, task
+
+Install
+
 ```
 $ npm install gulp
 ```
-    
-Gulp.js er:
 
-* byggesystem for javascript
-* awesome
+---
 
+# Eksempel
+
+```javascript
+var gulp = require('gulp');
+```
+
+---
+
+# Eksempel
+
+```javascript
+var gulp = require('gulp');
+
+gulp.task('copy', function() {
+  gulp.src('./folder/*.js')
+    .pipe(gulp.dest('./public/'));
+});
+```
+
+---
+
+
+# Eksempel
+
+```javascript
+var gulp = require('gulp');
+
+gulp.task('copy', function() {
+  gulp.src('./folder/*.js')
+    .pipe(gulp.dest('./public/'));
+});
+```
+
+```
+$ gulp copy
+```
+
+---
+
+
+# Eksempel
+
+```javascript
+var gulp = require('gulp');
+
+gulp.task('copy', function() {
+  gulp.src('./folder/*.js')
+    .pipe(gulp.dest('./public/'));
+});
+```
+
+---
+
+# Eksempel
+
+```javascript
+var gulp = require('gulp');
+
+gulp.task('copy', function() {
+  gulp.src('./folder/*.js')
+    .pipe(gulp.dest('./public/'));
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['./folder/*.js'], ['copy']);
+});
+```
+
+---
+
+# Eksempel
+
+```javascript
+var gulp = require('gulp');
+
+gulp.task('copy', function() {
+  gulp.src('./folder/*.js')
+    .pipe(gulp.dest('./public/'));
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['./folder/*.js'], ['copy']);
+});
+```
+
+```
+$ gulp watch
+```
 
 ---
 
@@ -32,45 +124,97 @@ Andre byggesystem:
 
 ---
 
-# gulpfile.js
+# Alternativer
+
+Andre byggesystem:
+
+* npm
+* Grunt.js
 
 ```javascript
-var gulp = require('gulp');
-var babel = require('babel');
-
-gulp.src(['./src/**.js'])
-  .pipe(babel())
-  .pipe(gulp.dest('dist/'));
-```
-
----
-
-# npm som interface!
-
-```javascript
-"scripts": {
-  "clean" : "rm -r tmp/",
-  "build" : "gulp build"
+{
+  "scripts": {
+    "copy" : "cp folder/*.js public/"
+  }
 }
 ```
 
+
 ---
 
-# Features
+# Alternativer
 
-* Streams
-* Masse pakker
-* Enkelt å skrive egne pakker
-* Javascript
+Andre byggesystem:
+
+* npm
+* Grunt.js
 
 ```javascript
-express.run(['test/mock/backend.js'].concat(process.argv), {}, false);
-gulp.watch(['test/mock/**/*.js'], function() {
-  express.stop();
-  express.run(['test/mock/backend.js'].concat(process.argv));
-  devtools.reload();
+grunt.initConfig({
+  copy: {
+    main: {
+      files: [
+        {
+          expand: true,
+          src: ['folder/*.js'],
+          dest: 'public/',
+          filter: 'isFile'
+        },
+      ],
+    },
+  },
+});
+grunt.registerTask('copy', ['copy']);
+```
+
+
+---
+
+# Live reload
+
+```javascript
+gulp.task('connect', function() {
+  connect.server({
+    root: 'app',
+    livereload: true
+  });
 });
 ```
+
+---
+
+# Live reload
+
+```javascript
+gulp.task('connect', function() {
+  connect.server({
+    root: 'app',
+    livereload: true
+  });
+});
+
+gulp.task('javascript', function() {
+  gulp.src('./app/app.js')
+    .pipe(connect.reload());
+});
+```
+
+---
+
+# Live reload backend
+
+```javascript
+gulp.task('backend', function() {
+  express.run(['src/backend.js']);
+
+  gulp.watch(['src/**/*.js'], function() {
+    express.stop();
+    express.run(['src/backend.js']);
+  });
+})
+```
+
+
 ---
 
 # Streams
@@ -78,8 +222,12 @@ gulp.watch(['test/mock/**/*.js'], function() {
 ```javascript
 mergestream = require('merge-stream'),
 
-function app() { return gulp.src(config.SRC.JS).pipe(bable()); }
-function less() { return gulp.src(config.SRC.LESS).pipe(less()); }
+function app() { 
+  return gulp.src(config.SRC.JS).pipe(bable()); 
+}
+function less() { 
+  return gulp.src(config.SRC.LESS).pipe(less()); 
+}
 
 function build() {
   return mergestream(app(), less());
@@ -94,8 +242,12 @@ function build() {
 ```javascript
 streamqueue = require('streamqueue');
 
-function app() { return gulp.src(config.SRC.JS).pipe(bable()); }
-function lib() { return gulp.src(config.SRC.LIB); }
+function app() { 
+  return gulp.src(config.SRC.JS).pipe(bable()); 
+}
+function lib() { 
+  return gulp.src(config.SRC.LIB); 
+}
 
 function buildJS() {
   return streamqueue({objectMode: true}, lib(), app())
@@ -103,6 +255,26 @@ function buildJS() {
 }
 
 
+```
+---
+
+
+---
+
+# Do all the things!
+
+```javascript
+gulp.task('build', function() {
+    return browserify({
+        entries: './js/app.jsx', extensions: ['.jsx']
+    })
+    .transform(reactify)
+    .transform(babelify)
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(magic())
+    .pipe(gulp.dest('dist'));
+});
 ```
 
 ---
@@ -118,4 +290,26 @@ gulp/tools.js
 
 ---
 
+# Splitte opp prosjektet
+
+```
+gulpfile.js
+gulp/javascript.js
+gulp/styling.js
+gulp/tools.js
+```
+
+
+```javascript
+var styling = require('./gulp/styling');
+
+gulp.task('css', function() {
+  styling.css(); 
+})
+```
+---
+
 # Demo
+
+Demo, 
+asdklasd 

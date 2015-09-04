@@ -217,26 +217,6 @@ gulp.task('backend', function() {
 
 ---
 
-# Streams
-
-```javascript
-mergestream = require('merge-stream'),
-
-function app() { 
-  return gulp.src(config.SRC.JS).pipe(bable()); 
-}
-function less() { 
-  return gulp.src(config.SRC.LESS).pipe(less()); 
-}
-
-function build() {
-  return mergestream(app(), less());
-}
-
-```
-
----
-
 # Streams (queue)
 
 ```javascript
@@ -249,32 +229,15 @@ function lib() {
   return gulp.src(config.SRC.LIB); 
 }
 
-function buildJS() {
+function build() {
   return streamqueue({objectMode: true}, lib(), app())
           .pipe(concat('myapp.js'));   
 }
 
+function buildProd() {
+  // lib().pipe(uglify())
+}
 
-```
----
-
-
----
-
-# Do all the things!
-
-```javascript
-gulp.task('build', function() {
-    return browserify({
-        entries: './js/app.jsx', extensions: ['.jsx']
-    })
-    .transform(reactify)
-    .transform(babelify)
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(magic())
-    .pipe(gulp.dest('dist'));
-});
 ```
 
 ---
@@ -309,7 +272,27 @@ gulp.task('css', function() {
 ```
 ---
 
-# Demo
 
-Demo, 
-asdklasd 
+
+---
+
+# Do all the things!
+
+```javascript
+gulp.task('build', function() {
+    return browserify({
+        entries: './js/app.jsx', extensions: ['.jsx']
+    })
+    .transform(reactify)
+    .transform(babelify)
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(magic())
+    .pipe(gulp.dest('dist'));
+});
+```
+
+---
+
+
+# Demo

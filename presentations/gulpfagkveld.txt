@@ -1,4 +1,3 @@
-
 class: center, middle
 
 # Gulp.js a awesome!
@@ -59,19 +58,6 @@ $ npm install gulp
      <script src="myscript10.js">
    </body>
  </html>
-```
-
----
-
-```html
-<body>
-  <script>
-      const UNICORN_DNA = 2;
-      let ponies = [1, 2, 11];
-      let unicorns = ponies.map(u => u*UNICORN_DNA);
-      console.log(superPonies); // [2, 4, 22]
-  </script>
-</body>
 ```
 
 ---
@@ -219,6 +205,45 @@ grunt.initConfig({
 });
 grunt.registerTask('copy', ['copy']);
 ```
+---
+
+```html
+<body>
+  <script>
+      const UNICORN_DNA = 2;
+      let ponies = [1, 2, 11];
+      let unicorns = ponies.map(p => p*UNICORN_DNA);
+      console.log(unicorns); // [2, 4, 22]
+  </script>
+</body>
+```
+
+---
+
+# ES6
+```javascript
+var babel  = require('gulp-babel');
+var concat = require('gulp-concat');
+
+gulp.task('es6', function() {
+  gulp.src('src/**/*.js')
+    .pipe(babel())
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('dist/');
+});
+
+
+```
+
+---
+
+```html
+ <html>
+   <body>
+     <script src="dist/main.js">
+   </body>
+ </html>
+```
 
 
 ---
@@ -252,20 +277,6 @@ gulp.task('javascript', function() {
 });
 ```
 
----
-
-# Live reload backend
-
-```javascript
-gulp.task('backend', function() {
-  express.run(['src/backend.js']);
-
-  gulp.watch(['src/**/*.js'], function() {
-    express.stop();
-    express.run(['src/backend.js']);
-  });
-})
-```
 ---
 
 class: center, middle

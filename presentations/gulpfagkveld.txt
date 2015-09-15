@@ -220,6 +220,19 @@ grunt.registerTask('copy', ['copy']);
 
 ---
 
+```html
+<body>
+  <script>
+      const UNICORN_DNA = 2;
+      let ponies = [1, 2, 11];
+      let pony_unicorns = ponies.map(p => p*UNICORN_DNA);
+      console.log(pony_unicorns); // [2, 4, 22]
+  </script>
+</body>
+```
+
+---
+
 # ES6
 ```javascript
 var babel  = require('gulp-babel');

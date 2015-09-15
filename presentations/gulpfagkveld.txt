@@ -4,6 +4,8 @@ class: center, middle
 # Gulp.js a awesome!
 Vegard Veiset
 
+vegard.veiset@bekk.no
+
 ---
 
 # Introduksjon
@@ -19,6 +21,57 @@ Install
 
 ```
 $ npm install gulp
+```
+
+---
+
+```html
+ <html>
+   <body>
+  
+     <script src="myscript.js">
+
+
+   </body>
+ </html>
+```
+
+---
+
+```html
+ <html>
+   <body>
+     <script src="react.js">
+     <script src="myscript.js">
+
+
+   </body>
+ </html>
+```
+---
+
+```html
+ <html>
+   <body>
+     <script src="react.js">
+     <script src="myscript.js">
+     ...
+     <script src="myscript10.js">
+   </body>
+ </html>
+```
+
+---
+
+```html
+<body>
+  <script>
+      const UNICORN_DNA = 2;
+      let ponies = [1, 2, 11];
+      let unicorns = ponies.map(u => u*UNICORN_DNA);
+      console.log(superPonies); // [2, 4, 22]
+  </script>
+</body>
 ```
 
 ---
@@ -213,66 +266,11 @@ gulp.task('backend', function() {
   });
 })
 ```
-
-
 ---
 
-# Streams (queue)
+class: center, middle
 
-```javascript
-streamqueue = require('streamqueue');
-
-function app() { 
-  return gulp.src(config.SRC.JS).pipe(bable()); 
-}
-function lib() { 
-  return gulp.src(config.SRC.LIB); 
-}
-
-function build() {
-  return streamqueue({objectMode: true}, lib(), app())
-          .pipe(concat('myapp.js'));   
-}
-
-function buildProd() {
-  // lib().pipe(uglify())
-}
-
-```
-
----
-
-# Splitte opp prosjektet
-
-```
-gulpfile.js
-gulp/javascript.js
-gulp/styling.js
-gulp/tools.js
-```
-
----
-
-# Splitte opp prosjektet
-
-```
-gulpfile.js
-gulp/javascript.js
-gulp/styling.js
-gulp/tools.js
-```
-
-
-```javascript
-var styling = require('./gulp/styling');
-
-gulp.task('css', function() {
-  styling.css(); 
-})
-```
----
-
-
+# ?
 
 ---
 
@@ -297,6 +295,3 @@ gulp.task('build', function() {
 
 # Demo
 
-Hei
-
-Litt content

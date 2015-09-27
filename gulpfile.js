@@ -37,5 +37,4 @@ gulp.task('watch', function () {
   gulp.watch([path + '*.txt'], ['presentation']);
 });
 
-
 gulp.task('serve', ['presentation', 'connect', 'watch']);

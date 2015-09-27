@@ -1,9 +1,11 @@
-
 class: center, middle
 
 # Gulp.js a awesome!
 Vegard Veiset
 
+vegard.veiset@bekk.no
+
+@veiset
 ---
 
 # Introduksjon
@@ -19,6 +21,44 @@ Install
 
 ```
 $ npm install gulp
+```
+
+---
+
+```html
+ <html>
+   <body>
+  
+     <script src="myscript.js">
+
+
+   </body>
+ </html>
+```
+
+---
+
+```html
+ <html>
+   <body>
+     <script src="react.js">
+     <script src="myscript.js">
+
+
+   </body>
+ </html>
+```
+---
+
+```html
+ <html>
+   <body>
+     <script src="react.js">
+     <script src="myscript.js">
+     ...
+     <script src="myscript10.js">
+   </body>
+ </html>
 ```
 
 ---
@@ -166,6 +206,58 @@ grunt.initConfig({
 });
 grunt.registerTask('copy', ['copy']);
 ```
+---
+
+```html
+<body>
+  <script>
+      const UNICORN_DNA = 2;
+      let ponies = [1, 2, 11];
+      let unicorns = ponies.map(p => p*UNICORN_DNA);
+      console.log(unicorns); // [2, 4, 22]
+  </script>
+</body>
+```
+
+---
+
+```html
+<body>
+  <script>
+      const UNICORN_DNA = 2;
+      let ponies = [1, 2, 11];
+      let pony_unicorns = ponies.map(p => p*UNICORN_DNA);
+      console.log(pony_unicorns); // [2, 4, 22]
+  </script>
+</body>
+```
+
+---
+
+# ES6
+```javascript
+var babel  = require('gulp-babel');
+var concat = require('gulp-concat');
+
+gulp.task('es6', function() {
+  gulp.src('src/**/*.js')
+    .pipe(babel())
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('dist/');
+});
+
+
+```
+
+---
+
+```html
+ <html>
+   <body>
+     <script src="dist/main.js">
+   </body>
+ </html>
+```
 
 
 ---
@@ -201,78 +293,9 @@ gulp.task('javascript', function() {
 
 ---
 
-# Live reload backend
+class: center, middle
 
-```javascript
-gulp.task('backend', function() {
-  express.run(['src/backend.js']);
-
-  gulp.watch(['src/**/*.js'], function() {
-    express.stop();
-    express.run(['src/backend.js']);
-  });
-})
-```
-
-
----
-
-# Streams (queue)
-
-```javascript
-streamqueue = require('streamqueue');
-
-function app() { 
-  return gulp.src(config.SRC.JS).pipe(bable()); 
-}
-function lib() { 
-  return gulp.src(config.SRC.LIB); 
-}
-
-function build() {
-  return streamqueue({objectMode: true}, lib(), app())
-          .pipe(concat('myapp.js'));   
-}
-
-function buildProd() {
-  // lib().pipe(uglify())
-}
-
-```
-
----
-
-# Splitte opp prosjektet
-
-```
-gulpfile.js
-gulp/javascript.js
-gulp/styling.js
-gulp/tools.js
-```
-
----
-
-# Splitte opp prosjektet
-
-```
-gulpfile.js
-gulp/javascript.js
-gulp/styling.js
-gulp/tools.js
-```
-
-
-```javascript
-var styling = require('./gulp/styling');
-
-gulp.task('css', function() {
-  styling.css(); 
-})
-```
----
-
-
+# ?
 
 ---
 
@@ -294,9 +317,6 @@ gulp.task('build', function() {
 
 ---
 
-
 # Demo
 
-Hei
 
-Litt content

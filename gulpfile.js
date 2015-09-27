@@ -5,6 +5,7 @@ var gulp = require('gulp'),
 
 var options = minimist(process.argv.slice(2));
 var pres = options.pres;
+var path = options.path || './presentations/';
 
 gulp.task('connect', function() {
   connect.server({
@@ -24,17 +25,16 @@ gulp.task('html', function () {
 });
 
 gulp.task('presentation', function() {
-  gulp.src('./presentations/' + pres + '.txt')
+  gulp.src(path + pres + '.txt')
     .pipe(rename('content.txt'))
     .pipe(gulp.dest('./app/'))
     .pipe(connect.reload());
 });
- 
+
 gulp.task('watch', function () {
   gulp.watch(['./app/*.html'], ['html']);
   gulp.watch(['./app/app.js'], ['javascript']);
-  gulp.watch(['./presentations/*.txt'], ['presentation']);
+  gulp.watch([path + '*.txt'], ['presentation']);
 });
 
- 
 gulp.task('serve', ['presentation', 'connect', 'watch']);

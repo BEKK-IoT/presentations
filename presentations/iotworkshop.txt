@@ -1,0 +1,54 @@
+
+class: center, middle
+
+# IoT workshop
+
+---
+
+# Devices
+
+* Arduino
+* Photon
+
+---
+
+# Firebase 
+
+http://firebase.com
+
+---
+
+# JohnnyFive
+
+http://johnny-five.io/
+
+---
+
+# Gotchas
+
+- Ikke Node.js 4.x, sorry.
+- Photon: Porten A5 er en reservert
+
+---
+
+# Hva er IoT?
+
+- Les av sensorer lokalt
+- Send data til cloud
+- Interaksjon mellom forskjellige devices
+
+---
+
+# Vi har
+
+- Sphero
+- Lampe
+- Spill
+
+---
+
+class: center, middle
+
+# http://start.vz.is
+
+WIFI: iotworkshop, PSWD: ioterkult

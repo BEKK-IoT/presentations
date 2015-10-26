@@ -1,0 +1,57 @@
+
+class: center, middle
+
+# IoT workshop
+
+---
+
+
+# Teknologi
+
+- Javascript (ES6)
+- [Firebase](https://fiery-inferno-7517.firebaseio.com/)
+
+
+---
+
+# Gadgets
+
+- Photon
+- Arduino
+- Masse sensors
+
+---
+
+# Demo
+
+
+---
+
+# Lampe
+
+```js
+// Options: true, false
+fb.send('switch', true, 'gadgets/lamp');
+```
+
+---
+
+# Sphero
+
+```js
+// Options: left, up, right, down
+fb.send('move', 'left', 'gadgets/sphero');
+
+// Options: 0-255 values
+fb.send('color', {red: 255, blue: 0, green: 0}, 'gadgets/sphero');
+
+```
+
+---
+
+# Spill
+
+```js
+// Options: left, right, up, upright, upleft
+fb.send('move', 'left', 'gadgets/game');
+```

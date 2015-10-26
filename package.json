@@ -10,7 +10,9 @@
     "minimist": "^1.2.0",
     "remark-bekk": "bekk/remark"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  },
   "scripts": {
     "serve": "gulp serve"
   },

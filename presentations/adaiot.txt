@@ -1,0 +1,68 @@
+
+class: center, middle
+
+# IoT workshop for  Prosjekt Ada
+
+---
+
+# Agenda
+
+- Leke med gadgets under enkle omgivelser
+- Koble samme internett med den fysiske verden
+
+---
+
+# Gadgets
+
+- Arduino
+- Sphero
+- NeoPixel
+- Masse sensorer
+
+
+<img src="images/1461_LRG.jpg" width="500">
+---
+
+# Demo
+
+##DEMO
+
+---
+
+# Teknologi
+
+- Javascript (ES6)
+- [Firebase](https://fiery-inferno-7517.firebaseio.com/)
+
+---
+
+# Lampe
+
+```js
+// Options: true, false
+fb.send('switch', true, 'gadgets/lamp');
+```
+
+---
+
+# Sphero
+
+```js
+// Options: left, up, right, down
+fb.send('move', 'left', 'gadgets/sphero');
+
+// Options: 0-255 values
+fb.send('color', {red: 255, blue: 0, green: 0}, 'gadgets/sphero');
+
+```
+<img src="images/sphero-web-small-shadow.jpg" width="500">
+
+
+---
+
+# Spill
+
+```js
+// Options: left, right, up, upright, upleft
+fb.send('move', 'left', 'gadgets/game');
+```

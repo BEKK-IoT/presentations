@@ -23,9 +23,9 @@ class: center, middle
 <img src="images/1461_LRG.jpg" width="500">
 ---
 
-# Demo
+# Hacking
 
-##DEMO
+##Guidet hacking
 
 ---
 
